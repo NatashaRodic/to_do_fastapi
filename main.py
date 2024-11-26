@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from models import Todo
 
 
 app = FastAPI()
@@ -17,6 +18,10 @@ def all_todos():
 #Get single todo
 
 #Create a todo
+@app.post('/todos')
+def create_todos(todo: Todo):
+    todos.append(todo)
+    return {'message': 'Todo has been added'}
 
 #Update a todo
 
