@@ -7,7 +7,12 @@ app = FastAPI()
 def root():
     return{'message': 'Hello World'}
 
+todos = []
+
 #Get all todos
+@app.get('/todos')
+def all_todos():
+    return {'todos': todos}
 
 #Get single todo
 
