@@ -32,4 +32,12 @@ def create_todos(todo: Todo):
 
 #Update a todo
 
+
 #Delete a todo
+@app.delete('/todos/{todo_id}')
+def delete_todo(todo_id: int):
+    for todo in todos:
+        if todo.id == todo_id:
+            todos.remove(todo)
+            return {'message': 'To do has been DELETED'}
+    return {'message': 'No todos found'}
