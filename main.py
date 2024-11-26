@@ -16,6 +16,13 @@ def all_todos():
     return {'todos': todos}
 
 #Get single todo
+@app.get('/todos/{todo_id}')
+def get_todo(todo_id: int):
+    for todo in todos:
+        if todo.id == todo_id:
+            return {'todo': todo}
+        else:
+            return {'message': 'No todos found'}
 
 #Create a todo
 @app.post('/todos')
