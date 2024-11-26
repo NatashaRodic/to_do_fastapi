@@ -31,7 +31,15 @@ def create_todos(todo: Todo):
     return {'message': 'Todo has been added'}
 
 #Update a todo
-
+@app.put('/todos/{todo_id}')
+def update_todo(todo_id: int, todo_object: Todo):
+    for todo in todos:
+        if todo.id == todo_id:
+            todo.id = todo_id
+            todo.item = todo_object.item
+            return {'todo': todo}
+        else:
+            return {'message': 'No todos found for update'}
 
 #Delete a todo
 @app.delete('/todos/{todo_id}')
